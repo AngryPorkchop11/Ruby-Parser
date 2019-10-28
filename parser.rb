@@ -36,8 +36,9 @@ end
 
 #////////////////////////////////////////////VARS///////////////////////////////////////////////////#
 input_array = ARGV #takes in command line as arguments
-#input_array = %w(test1.cpl -p) #***DEBUGGING***#
-  _chars = [] #array to make sentence for lexing
+#input_array = %w(test1.cpl -p) #***DEBUGGING w/out commandline input***#
+_chars = [] #array to make it easier to format input for lexing
+input_as_string = String.new #holds formatted input for lexing (one big string)
 _key = String.new
 file_name = String.new
 #////////////////////////////VARS//////////////////////////////////////////////////////////////////#
@@ -52,8 +53,8 @@ end
 
 if _key == "-s"
   if read_file(input_array[0], _chars) != false #read file and store chars into an array
-    _chars  = read_file(input_array[0], _chars) #calling method twice feels redundant...?IDK
-    print _chars
+    input_as_string = read_file(input_array[0], _chars).join #calling method twice feels redundant...?IDK
+    print input_as_string #***FOR TESTING***#
   else
   puts "ERROR IN BODY"
   end
